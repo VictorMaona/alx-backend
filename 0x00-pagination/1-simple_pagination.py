@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Defines class Server that paginates a database of popular baby names
+Defines class server for paginating baby name database
 """
 import csv
 import math
@@ -9,12 +9,12 @@ from typing import List, Tuple
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
-    Takes 2 integer arguments and returns a tuple of size two
-    containing the start and end index corresponding to the range of
-    indexes to return in a list for those pagination parameters
+    tuple of size two with the start and end indexes
+    containing start and index corresponds to range of
+    indexes to return list for pagination parameters
     Args:
-        page (int): page number to return (pages are 1-indexed)
-        page_size (int): number of items per page
+        page (int): number to return (pages are 1-indexed)
+        page_size (int): number of items page
     Return:
         tuple(start_index, end_index)
     """
@@ -27,7 +27,7 @@ def index_range(page: int, page_size: int) -> Tuple[int, int]:
 
 
 class Server:
-    """Server class to paginate a database of popular baby names.
+    """server class that paginates list of well liked baby names.
     """
     DATA_FILE = "Popular_Baby_Names.csv"
 
@@ -35,7 +35,7 @@ class Server:
         self.__dataset = None
 
     def dataset(self) -> List[List]:
-        """Cached dataset
+        """The Cached dataset
         """
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
@@ -47,12 +47,12 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
-        Takes 2 integer arguments and returns requested page from the dataset
+        integer argument and return requested page frm dataset
         Args:
-            page (int): required page number. must be a positive integer
-            page_size (int): number of records per page. must be a +ve integer
+            page (int): page number must be positive integer
+            page_size (int): number of records page must be a ve integer
         Return:
-            list of lists containing required data from the dataset
+            lists containing required data from dataset
         """
         assert type(page) is int and page > 0
         assert type(page_size) is int and page_size > 0
